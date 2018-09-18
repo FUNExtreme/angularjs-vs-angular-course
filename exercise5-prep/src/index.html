@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angularjs course</title>
+  </head>
+  <body>
+    <header>
+      <div ng-controller="RootController as root">
+        {{ root.title }}
+      </div>
+    </header>
+
+    <div class="page-container">
+      <aside class="pizza-sidebar">
+        <p class="slogan">Do you want a pizza me?</p>
+      </aside>
+
+      <div class="content">
+        <div ng-controller="PizzeriaController as pizzeriaController">
+            {{ pizzeriaController.pizzas }}
+        </div>
+      </div>
+    </div>
+      
+    <script src="bundle.js"></script>
+  </body>
+</html>

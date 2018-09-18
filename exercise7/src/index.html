@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angularjs course</title>
+  </head>
+  <body>
+    <header>
+      <div ng-controller="RootController as root">
+        {{ root.title }}
+      </div>
+    </header>
+
+    <div class="page-container">
+      <aside class="pizza-sidebar">
+        <p class="slogan">Do you want a pizza me?</p>
+      </aside>
+
+      <div class="content">
+        <div ng-controller="PizzeriaController as pizzeriaController">
+          <h2>Pizza choices:</h2>
+          <ul>
+            <li ng-repeat="pizza in pizzeriaController.pizzas | realPizzasOnly" ng-click="pizzeriaController.onPizzaClick(pizza)">{{ pizza.name }}</li>
+          </ul>
+        
+          <div class="pizza-info" ng-show="pizzeriaController.selectedPizza">
+            <h2>Selected pizza: </h2>
+            <p><strong>Name:</strong> {{ pizzeriaController.selectedPizza.name }}</p>
+            <p><strong>Description:</strong> {{ pizzeriaController.selectedPizza.description }}</p>
+          </div>
+
+          <hr>
+          <div class="pizza-new">
+            <h2>New pizza: </h2>
+            <form name="pizzeriaController.newPizzaForm" novalidate>
+              <label>
+                  Name:
+                  <input type="text" ng-model="pizzeriaController.newPizza.name" name="name" />
+              </label>
+            </form>
+            {{ pizzeriaController.newPizzaForm }}
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <script src="bundle.js"></script>
+  </body>
+</html>
